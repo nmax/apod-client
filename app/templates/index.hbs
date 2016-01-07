@@ -1,0 +1,9 @@
+<div class="apod-container">
+  {{#each model as |apod|}}
+    <div class="apod">
+      {{#link-to 'apod' apod}}
+        <img src="{{apod.url}}" class="apod-image-sd" />
+      {{/link-to}}
+    </div>
+  {{/each}}
+</div>
