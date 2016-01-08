@@ -1,9 +1,17 @@
-<div class="apod-container">
-  {{#each model as |apod|}}
-    <div class="apod">
-      {{#link-to 'apod' apod}}
-        <img src="{{apod.url}}" class="apod-image-sd" />
-      {{/link-to}}
-    </div>
-  {{/each}}
+<div class="grid-content">
+  <div id="inf-scroll-pane" class="grid-block large-up-3 medium-up-2 align-spaced v-align">
+    {{#each model as |apod|}}
+      <div class="grid-block">
+        <div class="apod grid-content">
+          {{#link-to 'apod' apod}}
+            {{apod-media modelId=apod.id type=apod.mediaType src=apod.url}}
+          {{/link-to}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+  <button class="load-more button expand" {{action "loadMore"}}>Load more?</button>
+
 </div>
+

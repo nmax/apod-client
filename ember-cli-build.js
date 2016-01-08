@@ -7,11 +7,14 @@ module.exports = function(defaults) {
     autoprefixer: {
       browsers: ['last 2 ios version'],
       cascade: false
+    },
+    sassOptions: {
+      includePaths: [
+        'bower_components/foundation-apps/scss'
+      ]
     }
+
   });
-
-  app.import('bower_components/foundation-apps/dist/css/foundation-apps.css');
-
 
   // Use `app.import` to add additional libraries to the generated
   // output files.

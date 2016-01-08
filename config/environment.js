@@ -19,6 +19,11 @@ module.exports = function(environment) {
     }
   };
 
+  ENV.contentSecurityPolicy = {
+    //'connect-src': ["'self'", "http://apod.nasa.gov/apod/image/"],
+    'img-src': "http://apod.nasa.gov/apod/image/"
+  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
