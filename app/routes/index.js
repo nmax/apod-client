@@ -3,15 +3,34 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 
   actions: {
-    loadMore() {
+    loadNext() {
       let controller = this.controllerFor('index');
       let limit = controller.get('limit');
       let offset = controller.get('offset');
-      controller.set('offset', offset + limit);
+      let newOffset = offset + limit;
+      controller.set('offset', newOffset);
 
       let query = this.store.query('apod', {
         limit,
-        offset: limit + offset
+        offset: newOffset
+      });
+
+      return query
+        .then(() => {
+          controller.set('model', this.store.peekAll('apod'));
+        });
+    },
+
+    loadPrevious () {
+      let controller = this.controllerFor('index');
+      let limit = controller.get('limit');
+      let offset = controller.get('offset');
+      let newOffset = offset - limit;
+      controller.set('offset', newOffset);
+
+      let query = this.store.query('apod', {
+        limit,
+        offset: newOffset
       });
 
       return query

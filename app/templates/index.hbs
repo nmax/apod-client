@@ -1,17 +1,17 @@
-<div class="grid-content">
-  <div id="inf-scroll-pane" class="grid-block large-up-3 medium-up-2 align-spaced v-align">
-    {{#each model as |apod|}}
-      <div class="grid-block">
-        <div class="apod grid-content">
-          {{#link-to 'apod' apod}}
-            {{apod-media modelId=apod.id type=apod.mediaType src=apod.url}}
-          {{/link-to}}
-        </div>
-      </div>
-    {{/each}}
-  </div>
 
-  <button class="load-more button expand" {{action "loadMore"}}>Load more?</button>
+<div class="grid-content list-container">
+  {{#ember-collection items=sortedByDate cell-layout=(fixed-grid-layout 800 400)
+    as |item index|}}
+    {{#if (is-first index)}}
+      <button class="load-more button expand" {{action "loadPrevious"}}>Load more?</button>
+    {{/if}}
 
+    {{#link-to 'apod' item}}
+      {{apod-media modelId=item.id type=item.mediaType src=item.url}}
+    {{/link-to}}
+
+    {{#if (is-last model index)}}
+      <button class="load-more button expand" {{action "loadNext"}}>Load more?</button>
+    {{/if}}
+  {{/ember-collection}}
 </div>
-

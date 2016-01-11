@@ -11,7 +11,6 @@
 
 .grid-frame > .liquid-child {
   @extend .grid-block;
-  margin-bottom: 1rem;
 }
 
 
@@ -29,4 +28,18 @@
 
 .load-more.button {
   margin-top: 1rem;
+}
+
+.apod-media {
+  max-height: 400px;
+  padding: 0.5rem 0;
+  overflow: hidden;
+}
+
+
+.list-container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  height: 100vh;
 }
