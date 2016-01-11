@@ -1,17 +1,19 @@
 
 <div class="grid-content list-container">
-  {{#ember-collection items=sortedByDate cell-layout=(fixed-grid-layout 800 400)
-    as |item index|}}
-    {{#if (is-first index)}}
-      <button class="load-more button expand" {{action "loadPrevious"}}>Load more?</button>
-    {{/if}}
+  {{#measure-width as |width|}}
+    {{#ember-collection items=model cell-layout=(fixed-grid-layout width 400)
+      as |item index|}}
+      {{#if (is-first index)}}
+        {{load-more-button action="loadPrevious" text="Load More"}}
+      {{/if}}
 
-    {{#link-to 'apod' item}}
-      {{apod-media modelId=item.id type=item.mediaType src=item.url}}
-    {{/link-to}}
+      {{#link-to 'apod' item}}
+        {{index}}{{apod-media modelId=item.id type=item.mediaType src=item.url}}
+      {{/link-to}}
 
-    {{#if (is-last model index)}}
-      <button class="load-more button expand" {{action "loadNext"}}>Load more?</button>
-    {{/if}}
-  {{/ember-collection}}
+      {{#liquid-if (is-last model index)}}
+        {{load-more-button action="loadNext" text="Load More"}}
+      {{/liquid-if}}
+    {{/ember-collection}}
+  {{/measure-width}}
 </div>

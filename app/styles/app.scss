@@ -27,19 +27,25 @@
 }
 
 .load-more.button {
-  margin-top: 1rem;
+  position: absolute;
+  margin: 0;
 }
 
 .apod-media {
   max-height: 400px;
   padding: 0.5rem 0;
   overflow: hidden;
+  text-align: center;
 }
 
+.apod-media > img {
+  max-height: 400px;
+  overflow: hidden;
+}
 
 .list-container {
   position: relative;
-  max-width: 800px;
+  max-width: 90%;
   margin: 0 auto;
   height: 100vh;
 }

@@ -8,8 +8,7 @@ export default Ember.Controller.extend({
   offset: 0,
   limit: 10,
 
-  sortedByDate: computed('model.[]', function () {
-    let model = this.get('model');
-    return model.sortBy('date:desc');
-  })
+  apodsSortingDesc: ['date:desc'],
+  sortedByDate: computed.sort('model.[]', 'apodsSortingDesc')
+
 });

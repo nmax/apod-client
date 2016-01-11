@@ -10,15 +10,10 @@ export default Ember.Route.extend({
       let newOffset = offset + limit;
       controller.set('offset', newOffset);
 
-      let query = this.store.query('apod', {
-        limit,
-        offset: newOffset
+      return this.queryApods(newOffset, limit).then((apods) => {
+        let model = controller.get('model');
+        model.pushObjects(apods.get('content'));
       });
-
-      return query
-        .then(() => {
-          controller.set('model', this.store.peekAll('apod'));
-        });
     },
 
     loadPrevious () {
@@ -28,16 +23,26 @@ export default Ember.Route.extend({
       let newOffset = offset - limit;
       controller.set('offset', newOffset);
 
-      let query = this.store.query('apod', {
-        limit,
-        offset: newOffset
+      return this.queryApods(newOffset, limit).then((apods) => {
+        let model = controller.get('model');
+        model.unshiftObjects(apods.get('content'));
       });
-
-      return query
-        .then(() => {
-          controller.set('model', this.store.peekAll('apod'));
-        });
     }
+  },
+
+  queryApods (offset, limit) {
+    return this.store.query('apod', {
+      limit, offset
+    })
+    .catch(function (someError) {
+      console.log(someError);
+    });
+  },
+
+  reloadModel () {
+    let ctrl = this.controllerFor('index');
+    ctrl.set('model', this.store.peekAll('apod'));
+    console.log('model update');
   },
 
   model ({ limit, offset }) {
