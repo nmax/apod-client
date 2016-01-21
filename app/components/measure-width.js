@@ -9,8 +9,10 @@ export default Ember.Component.extend({
   didInsertElement () {
     this._super(...arguments);
 
-    this.setupResize();
-    this.handleResize();
+    Ember.run.scheduleOnce('afterRender', () => {
+      this.setupResize();
+      this.handleResize();
+    });
   },
 
   setupResize () {

@@ -10,9 +10,8 @@ export default Ember.Route.extend({
       let newOffset = offset + limit;
       controller.set('offset', newOffset);
 
-      return this.queryApods(newOffset, limit).then((apods) => {
-        let model = controller.get('model');
-        model.pushObjects(apods.get('content'));
+      return this.queryApods(newOffset, limit).then(() => {
+        controller.set('model', this.store.peekAll('apod'));
       });
     },
 
@@ -20,12 +19,19 @@ export default Ember.Route.extend({
       let controller = this.controllerFor('index');
       let limit = controller.get('limit');
       let offset = controller.get('offset');
-      let newOffset = offset - limit;
+      let newOffset = Math.max(offset - limit, 0);
       controller.set('offset', newOffset);
 
-      return this.queryApods(newOffset, limit).then((apods) => {
-        let model = controller.get('model');
-        model.unshiftObjects(apods.get('content'));
+      return this.queryApods(newOffset, limit).then(() => {
+        controller.set('model', this.store.peekAll('apod'));
+
+        let scrollTop = controller.get('scrollTop');
+        if (!scrollTop || scrollTop <= 0) {
+          //TODO: remove magic numbers // item-height * query-limit
+          controller.set('scrollTop', 400 * 15);
+        } else if (scrollTop > 0) {
+          controller.set('scrollTop', scrollTop + (400 * 15));
+        }
       });
     }
   },
@@ -37,12 +43,6 @@ export default Ember.Route.extend({
     .catch(function (someError) {
       console.log(someError);
     });
-  },
-
-  reloadModel () {
-    let ctrl = this.controllerFor('index');
-    ctrl.set('model', this.store.peekAll('apod'));
-    console.log('model update');
   },
 
   model ({ limit, offset }) {
