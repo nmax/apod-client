@@ -20,10 +20,7 @@
 
 .image-col {
   text-align: center;
-}
-
-.apod-image-sd {
-  max-height: 98vh;
+  max-height: 94vh;
 }
 
 .load-more.button {
@@ -31,15 +28,15 @@
   margin: 0;
 }
 
-.apod-media {
-  max-height: 400px;
+.list-item {
   padding: 0.5rem 0;
   overflow: hidden;
-  text-align: center;
+  height: 400px;
 }
 
 .apod-media > img {
   max-height: 400px;
+  width: auto;
   overflow: hidden;
 }
 
