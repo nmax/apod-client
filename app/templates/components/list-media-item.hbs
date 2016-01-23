@@ -1,0 +1,11 @@
+{{#if isImage}}
+  {{#if isLoading}}
+    {{ember-spinner}}
+  {{else}}
+    {{{imageData}}}
+  {{/if}}
+{{/if}}
+
+{{#if isNoImage}}
+  <div>Placeholder</div>
+{{/if}}

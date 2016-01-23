@@ -43,7 +43,8 @@ img {
 
 .image-col {
   max-width: 70%;
-  /*max-height: 94vh;*/
+  max-height: 94vh;
+  min-width: calc(33% + 250px);
 }
 
 .apod-explanation {
@@ -56,21 +57,24 @@ img {
   max-height: 94vh;
 }
 
+.list-container {
+  position: relative;
+  max-width: 1215px; // 1200px + 15px scroll-bar-width
+  margin: 0 auto;
+  height: 100vh;
+}
+
 .list-item {
   position: relative;
   overflow: hidden;
   width: 600px;
   height: 400px;
-  padding: 0.25rem;
+  padding: 0.15rem;
 }
 
 .list-item .apod-media > img {
-  object-fit: contain;
-}
-
-.list-container {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  height: 100vh;
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+  display: inline;
 }

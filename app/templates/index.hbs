@@ -1,11 +1,12 @@
 {{#measure-width class="list-container" as |width|}}
   {{#ember-collection class="apod-list" buffer="10"
     items=sortedByDate cell-layout=(fixed-grid-layout 600 400)
+    estimated-width=1200
     scroll-top=scrollTop scroll-left=scrollLeft scroll-change=(action "scrollChange")
     as |item index|}}
     <div class="list-item">
       {{#link-to 'apod' item}}
-        {{apod-media modelId=item.id type=item.mediaType src=item.url}}
+        {{list-media-item modelId=item.id type=item.mediaType src=item.url}}
       {{/link-to}}
     </div>
   {{/ember-collection}}
