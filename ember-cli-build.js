@@ -13,8 +13,9 @@ module.exports = function(defaults) {
         'bower_components/foundation-apps/scss'
       ]
     }
-
   });
+
+  app.import('./bower_components/waypoints/lib/jquery.waypoints.min.js');
 
   // Use `app.import` to add additional libraries to the generated
   // output files.

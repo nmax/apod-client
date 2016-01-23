@@ -1,48 +1,76 @@
-@import 'settings';
-@import 'foundation';
-
-.grid-content .grid-block .grid-content {
-  overflow: hidden;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
 }
 
-.full-height {
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  font-size: 16px;
+}
+
+img {
+  display: inline-block;
+  max-width: 100%;
+  min-width: 100%;
+  vertical-align: middle;
+}
+
+.detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
   height: 100vh;
 }
 
-.grid-frame > .liquid-child {
-  @extend .grid-block;
+.detail-view {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
+
+.info-col {
+  max-width: 30%;
+  padding: 1rem;
+}
+
+.image-col {
+  max-width: 70%;
+  /*max-height: 94vh;*/
+}
 
 .apod-explanation {
   text-align: justify;
 }
 
-.image-col {
-  text-align: center;
+.image-col .apod-media img,
+.image-col .apod-media iframe {
+  max-width: 100%;
   max-height: 94vh;
 }
 
-.load-more.button {
-  position: absolute;
-  margin: 0;
-}
-
 .list-item {
-  padding: 0.5rem 0;
+  position: relative;
   overflow: hidden;
+  width: 600px;
   height: 400px;
+  padding: 0.25rem;
 }
 
-.apod-media > img {
-  max-height: 400px;
-  width: auto;
-  overflow: hidden;
+.list-item .apod-media > img {
+  object-fit: contain;
 }
 
 .list-container {
   position: relative;
-  max-width: 90%;
+  max-width: 1200px;
   margin: 0 auto;
   height: 100vh;
 }

@@ -1,14 +1,12 @@
-<div class="grid-content detail-view">
-  <div class="grid-container ">
-    <div class="grid-block v-align full-height">
-      <div class="grid-content large-4 info-col">
-        <h2 class="apod-title">{{model.title}}</h2>
-        <p class="apod-explanation">{{model.explanation}}</p>
-      </div>
+<div class="detail-container">
+  <div class="detail-view">
+    <div class="info-col">
+      <h2 class="apod-title">{{model.title}}</h2>
+      <p class="apod-explanation">{{model.explanation}}</p>
+    </div>
 
-      <div class="grid-content large-8 image-col">
-        {{apod-media modelId=model.id type=model.mediaType src=model.url}}
-      </div>
+    <div class="image-col">
+      {{apod-media modelId=model.id type=model.mediaType src=model.url}}
     </div>
   </div>
 </div>
