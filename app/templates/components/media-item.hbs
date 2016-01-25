@@ -2,10 +2,10 @@
   {{#if isLoading}}
     {{ember-spinner}}
   {{else}}
-    <img src="{{imageData}}" data-apod-id="{{modelId}}">
+    {{{image}}}
   {{/if}}
 {{/if}}
 
 {{#if isNoImage}}
-<iframe data-apod-id="{{modelId}}" type="text/html" width="800" height="400" src="{{src}}" frameborder="0"/>
+  <div>Placeholder: {{item.title}}</div>
 {{/if}}

@@ -6,7 +6,7 @@
     as |item index|}}
     <div class="list-item">
       {{#link-to 'apod' item}}
-        {{list-media-item modelId=item.id type=item.mediaType src=item.url}}
+        {{list-media-item item=item}}
       {{/link-to}}
     </div>
   {{/ember-collection}}
