@@ -1,4 +1,4 @@
-{{#measure-width class="list-container" as |width|}}
+<div class="list-container">
   {{#ember-collection class="apod-list" buffer="10"
     items=sortedByDate cell-layout=(fixed-grid-layout 600 400)
     estimated-width=1200
@@ -10,4 +10,4 @@
       {{/link-to}}
     </div>
   {{/ember-collection}}
-{{/measure-width}}
+</div>
