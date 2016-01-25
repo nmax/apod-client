@@ -21,6 +21,7 @@ img {
   vertical-align: middle;
 }
 
+
 .detail-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -34,7 +35,6 @@ img {
   justify-content: center;
   height: 100%;
 }
-
 
 .info-col {
   max-width: 30%;
@@ -72,9 +72,39 @@ img {
   padding: 0.15rem;
 }
 
+.list-item a {
+  text-decoration: none;
+  display: block;
+}
+
 .list-item .apod-media > img {
   height: 400px;
   width: 100%;
   object-fit: cover;
   display: inline;
+}
+
+.media-placeholder {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  flex-direction: column;
+  text-align: center;
+  padding: 1rem;
+}
+
+.media-placeholder sub.media-subtitle {
+  font-style: oblique;
+  color: #ccc;
+  font-size: 21px;
+}
+
+.media-placeholder .media-title {
+  font-size: 48px;
+  width: 100%;
+  line-height: 1;
+  margin: 0 0 1.25rem 0;
 }
