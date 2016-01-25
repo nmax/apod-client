@@ -1,9 +1,20 @@
 /*global caches, self*/
 
-self.addEventListener('fetch', function (event) {
- var requestURL = new URL(event.request.url);
+function fileExtension (path) {
+  var ext = path.substring(path.lastIndexOf('.') + 1);
+  return ext;
+}
 
-  if (requestURL.hostname === 'apod.nasa.gov') {
+self.addEventListener('fetch', function (event) {
+  var requestUrl = new URL(event.request.url);
+  var extension = fileExtension(requestUrl.href);
+  var probe = {
+    isImage: extension.match(/jpg|jpeg|gif|png|bmp|tiff/i),
+    isVideo: requestUrl.href.match(/youtube|vimeo|embed/ig),
+    fromApod: requestUrl.host === 'apod.nasa.gov'
+  };
+
+  if (probe.isImage || probe.isVideo || probe.fromApod) {
     event.respondWith(respondFromImageCache(event.request));
   }
 });
