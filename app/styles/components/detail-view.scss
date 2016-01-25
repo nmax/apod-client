@@ -1,0 +1,52 @@
+
+.detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100vh;
+}
+
+.detail-view {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 1rem;
+}
+
+
+.info-col {
+  width: 100%;
+}
+
+.image-col {
+  width: 100%;
+}
+
+.image-col .apod-media img,
+.image-col .apod-media iframe {
+  max-width: 100%;
+  max-height: 94vh;
+}
+
+@media (min-width: 1000px) {
+  .info-col {
+    max-width: 32%;
+    padding-right: 2rem;
+  }
+
+  .image-col {
+    max-width: 68%;
+    max-height: 94vh;
+    min-width: calc(32% + 250px);
+  }
+}
+
+.apod-title {
+  margin-top: 0;
+}
+
+.apod-explanation {
+  text-align: justify;
+}
+
