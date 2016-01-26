@@ -1,10 +1,10 @@
 
 <div class="detail-container">
   <div class="top-bar">
-    <button class="button back-to-list" title="go back to list">
+    {{#link-to 'index' tagName="button" class="button back-to-list" title="go back to list"}}
       {{fa-icon "list" size=2 inverse=true}}
       <span class="top-bar-button-text">Back</span>
-    </button>
+    {{/link-to}}
 
     <button class="button make-full-screen" title="show fullscreen image">
       {{fa-icon "expand" size=2 inverse=true}}
@@ -12,27 +12,35 @@
     </button>
 
     <div class="top-bar-right-group">
-      <button {{action "navigateToPrevious"}} class="button previous-apod" title="show previous image">
+      {{#link-to 'apod' (get model 'previousModelId') tagName="button" class="button previous-apod" title="show previous image"}}
         {{fa-icon "arrow-left" size=2 inverse=true}}
         <span class="top-bar-button-text">Previous</span>
-      </button>
-      <button {{action "navigateToNext"}} class="button next-apod" title="show next image">
+      {{/link-to}}
+      {{#link-to 'apod' (get model 'nextModelId') tagName="button" class="button next-apod" title="show next image"}}
         <span class="top-bar-button-text">Next</span>
         {{fa-icon "arrow-right" size=2 inverse=true}}
-      </button>
+      {{/link-to}}
     </div>
   </div>
 
-  <div class="scroll">
+  {{#liquid-bind model class="detail-view--animation-target" as |apod|}}
     <div class="detail-view">
       <div class="info-col">
-        <h2 class="apod-title">{{model.title}}</h2>
-        <div class="apod-date">{{model.id}}</div>
-        <p class="apod-explanation">{{model.explanation}}</p>
+        <h2 class="apod-title">{{apod.title}}</h2>
+        <div class="apod-date">{{apod.id}}</div>
+        <p class="apod-explanation">{{apod.explanation}}</p>
+        {{#if apod.concepts}}
+        <hr class="divider">
+        <div class="concept-tags">
+          {{#each apod.concepts as |tag|}}
+          <span class="tag">{{tag}}</span>
+          {{/each}}
+        </div>
+        {{/if}}
       </div>
       <div class="image-col">
-        {{media-item item=model}}
+        {{media-item item=apod}}
       </div>
     </div>
-  </div>
+  {{/liquid-bind}}
 </div>

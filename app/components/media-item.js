@@ -11,7 +11,12 @@ export default Ember.Component.extend({
 
   didReceiveAttrs () {
     this._super(...arguments);
-    this.set('isLoading', true);
+
+    Ember.run.later(this, function () {
+      if (!this.get('isLoaded')) {
+        this.set('isLoading', true);
+      }
+    }, 300);
 
     let image = new Image();
     image.src = this.getAttr('item').get('url');
@@ -19,6 +24,7 @@ export default Ember.Component.extend({
     image.crossorigin = true;
     image.onload = (() => {
       this.set('isLoading', false);
+      this.set('isLoaded', true);
       this.set('image', image);
     });
   }

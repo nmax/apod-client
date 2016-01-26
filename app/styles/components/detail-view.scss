@@ -1,14 +1,23 @@
+.top-bar,
+.previous-apod,
+.next-apod,
+.make-fullscreen {
+  display: flex;
+  flex-shrink: 0;
+}
+
 .detail-container {
+  display: flex;
+  flex-flow: column nowrap;
   max-width: 1200px;
   margin: 0 auto;
   height: 100vh;
 }
 
 .top-bar {
-  height: 50px;
   width: 100%;
-  background-color: black;
-  padding: 0 1rem;
+  background-color: #333;
+  padding: 0.5rem;
   align-items: center;
   justify-content: space-between;
 }
@@ -27,12 +36,6 @@
   font-size: 2em;
 }
 
-.top-bar,
-.previous-apod,
-.next-apod,
-.make-fullscreen {
-  display: flex;
-}
 
 .previous-apod .top-bar-button-text,
 .make-fullscreen .top-bar-button-text,
@@ -47,46 +50,48 @@
 .detail-view {
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
+  justify-content: space-around;
   padding: 1rem;
-  height: 100%;
   overflow-y: auto;
+  height: auto;
 }
 
-@media (min-width: 1000px) {
-  .detail-view {
-    align-items: center;
-    height: 100%;
-    padding-top: 0;
-  }
+.detail-view--animation-target {
+  overflow-y: auto;
+  height: auto;
 }
 
 .info-col {
-  width: 100%;
+  order: 2;
 }
 
 .image-col {
-  width: 100%;
-  text-align: center;
-  margin-bottom: 50px; // I dont even know
-}
-
-.image-col .apod-media img,
-.image-col .apod-media iframe {
-  max-height: 90vh;
-  min-width: auto;
+  order: 1;
+  margin-bottom: 1rem;
 }
 
 @media (min-width: 1000px) {
-  .info-col {
-    max-width: 32%;
-    padding-right: 2rem;
+  .info-col, .image-col {
+    display: flex;
+    flex-direction: row nowrap;
   }
 
+  .info-col {
+    order: 1;
+    width: 30%;
+    padding-right: 1rem;
+    flex-direction: column;
+  }
   .image-col {
-    max-width: 68%;
-    min-width: calc(32% + 250px);
+    order: 2;
+    max-width: 70%;
     margin-bottom: 0;
+  }
+}
+
+@media (min-width: 1200px) {
+  .detail-view {
+    padding: 1rem 0;
   }
 }
 
@@ -94,26 +99,49 @@
   font-size: 2.4rem;
   margin-top: 0;
   margin-bottom: 0;
-  text-align: center;
+  /*text-align: center;*/
   line-height: 0.9;
   padding-bottom: 0.25rem;
 }
 
 .apod-date {
+  font-style: oblique;
   color: lighten(#333, 25%);
-  font-size: 1.2rem;
-  font-family: monospace;
   white-space: nowrap;
-  text-align: center;
 }
 
 .apod-explanation {
   text-align: justify;
+  margin: 0.5rem 0 0 0;
 }
 
-
-.scroll {
-  overflow-y: auto;
-  height: 100%;
-  position: relative;
+.concept-tags {
+  font-style: oblique;
+  line-height: 1.7;
+  color: lighten(#333, 25%);
 }
+
+.concept-tags .tag {
+  font-weight: 100;
+  color: #fff;
+  background-color: #333;
+  padding: 0.25em 0.35em;
+  font-size: 0.9rem;
+  white-space: pre;
+}
+
+.divider {
+   display: block;
+   position: relative;
+   width: 100%;
+   height: 0;
+   max-height: 0;
+   margin: 1rem auto;
+   padding: 0;
+   font-size: 1px;
+   line-height: 0;
+   border: none;
+   border-top: 1px solid #aaaaaa;
+   border-bottom: 1px solid #fff;
+}
+

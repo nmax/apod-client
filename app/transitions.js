@@ -25,4 +25,20 @@ export default function () {
     })
   );
 
+  this.transition(
+    this.hasClass('detail-view--animation-target'),
+    this.toValue(function (oldModel, newModel) {
+      return oldModel.get('date') > newModel.get('date');
+    }),
+    this.use('toLeft')
+  );
+
+  this.transition(
+    this.hasClass('detail-view--animation-target'),
+    this.toValue(function (oldModel, newModel) {
+      return oldModel.get('date') < newModel.get('date');
+    }),
+    this.use('toRight')
+  );
+
 }

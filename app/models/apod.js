@@ -20,6 +20,13 @@ function dateToYYMMDD(date, sep='-') {
   return [year, month, day].join(sep);
 }
 
+function test (model) {
+  let id = model.get('id');
+  let [year, month,  day] = id.split('-').map((n) => parseInt(n, 10));
+  let dayAfter = new Date(Date.UTC(year, month - 1, day + 1));
+  return dateToYYMMDD(dayAfter);
+}
+
 export default DS.Model.extend({
   title: attr('string'),
   explanation: attr('string'),
@@ -34,17 +41,18 @@ export default DS.Model.extend({
     return Date.UTC(year, month - 1, day);
   }),
 
-  getNextModelId () {
+
+  nextModelId: computed('id', function () {
     let id = this.get('id');
     let [year, month,  day] = id.split('-').map((n) => parseInt(n, 10));
     let dayAfter = new Date(Date.UTC(year, month - 1, day + 1));
     return dateToYYMMDD(dayAfter);
-  },
+  }),
 
-  getPreviousModelId () {
+  previousModelId: computed('id', function () {
     let id = this.get('id');
     let [year, month,  day] = id.split('-').map((n) => parseInt(n, 10));
     let dayBefore = new Date(Date.UTC(year, month - 1, day - 1));
     return dateToYYMMDD(dayBefore);
-  }
+  })
 });
