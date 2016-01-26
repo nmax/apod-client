@@ -8,10 +8,8 @@ module.exports = function(defaults) {
       browsers: ['last 2 ios version'],
       cascade: false
     },
-    sassOptions: {
-      includePaths: [
-        'bower_components/foundation-apps/scss'
-      ]
+    emberCliFontAwesome: {
+      useScss: true
     }
   });
 

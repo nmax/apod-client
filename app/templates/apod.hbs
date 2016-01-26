@@ -1,11 +1,38 @@
+
 <div class="detail-container">
-  <div class="detail-view">
-    <div class="info-col">
-      <h2 class="apod-title">{{model.title}}</h2>
-      <p class="apod-explanation">{{model.explanation}}</p>
+  <div class="top-bar">
+    <button class="button back-to-list" title="go back to list">
+      {{fa-icon "list" size=2 inverse=true}}
+      <span class="top-bar-button-text">Back</span>
+    </button>
+
+    <button class="button make-full-screen" title="show fullscreen image">
+      {{fa-icon "expand" size=2 inverse=true}}
+      <span class="top-bar-button-text">HD</span>
+    </button>
+
+    <div class="top-bar-right-group">
+      <button {{action "navigateToPrevious"}} class="button previous-apod" title="show previous image">
+        {{fa-icon "arrow-left" size=2 inverse=true}}
+        <span class="top-bar-button-text">Previous</span>
+      </button>
+      <button {{action "navigateToNext"}} class="button next-apod" title="show next image">
+        <span class="top-bar-button-text">Next</span>
+        {{fa-icon "arrow-right" size=2 inverse=true}}
+      </button>
     </div>
-    <div class="image-col">
-      {{media-item item=model}}
+  </div>
+
+  <div class="scroll">
+    <div class="detail-view">
+      <div class="info-col">
+        <h2 class="apod-title">{{model.title}}</h2>
+        <div class="apod-date">{{model.id}}</div>
+        <p class="apod-explanation">{{model.explanation}}</p>
+      </div>
+      <div class="image-col">
+        {{media-item item=model}}
+      </div>
     </div>
   </div>
 </div>

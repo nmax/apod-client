@@ -27,22 +27,21 @@ export default Ember.Route.extend({
 
         let scrollTop = controller.get('scrollTop');
         if (!scrollTop || scrollTop <= 0) {
-          //TODO: remove magic numbers // item-height * query-limit
-          controller.set('scrollTop', 400 * 15);
+          //TODO: remove magic numbers 
+          // item-height * query-limit
+          controller.set('scrollTop', 200 * 15);
         } else if (scrollTop > 0) {
-          controller.set('scrollTop', scrollTop + (400 * 15));
+          controller.set('scrollTop', scrollTop + (200 * 15));
         }
       });
     }
   },
 
   queryApods (offset, limit) {
-    return this.store.query('apod', {
-      limit, offset
-    })
-    .catch(function (someError) {
-      console.log(someError);
-    });
+    return this.store.query('apod', { limit, offset })
+      .catch(function (someError) {
+        console.log(someError);
+      });
   },
 
   model ({ limit, offset }) {

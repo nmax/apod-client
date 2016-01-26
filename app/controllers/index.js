@@ -17,11 +17,15 @@ export default Ember.Controller.extend({
       this.set('scrollTop', scrollTop);
 
       if (this.checkHitStart(scrollTop)) {
-        this.send('loadPrevious');
+        Ember.run.debounce(this, function () {
+          this.send('loadPrevious');
+        }, 1000);
       }
 
       if (this.checkHitEnd(scrollTop)) {
-        this.send('loadNext');
+        Ember.run.debounce(this, function () {
+          this.send('loadNext');
+        }, 1000);
       }
     }
   },
@@ -54,5 +58,4 @@ export default Ember.Controller.extend({
   lastModelId: computed('sortedByDate', function () {
     return this.get('sortedByDate.lastObject.id');
   })
-
 });

@@ -51,5 +51,16 @@ img {
   vertical-align: middle;
 }
 
+.button {
+  background-color: transparent;
+  outline: none;
+  border: 0;
+  color: #fff;
+  line-height: 1;
+  display: inline-block;
+  cursor: pointer;
+}
+
+@import "bower_components/font-awesome/scss/font-awesome";
 @import 'components/list';
 @import 'components/detail-view';
