@@ -1,3 +1,7 @@
+@import 'roboto-ff';
+
+$boom-font: robotobold, Helvetica Neue, Helvetica, Arial, sans serif;
+
 *,
 *:before,
 *:after {
@@ -11,6 +15,7 @@ html, body {
 }
 
 body {
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
   font-size: 16px;
   background: url(../images/background-noise.png);
   background-color: #fff;
@@ -25,6 +30,7 @@ p {
 }
 
 h1, h2, h3, h4 {
+  font-family: $boom-font;
   margin: 1.414em 0 0.5em;
   font-weight: inherit;
   line-height: 1.2;
@@ -34,6 +40,7 @@ h1 {
   margin-top: 0;
   font-size: 3.998em;
 }
+
 h2 {
   font-size: 2.827em;
 }
@@ -47,11 +54,12 @@ h4 {
 img {
   display: inline-block;
   max-width: 100%;
-  min-width: 100%;
+  height: auto;
   vertical-align: middle;
 }
 
 .button {
+  font-family: $boom-font;
   background-color: transparent;
   outline: none;
   border: 0;

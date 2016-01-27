@@ -1,7 +1,9 @@
-navigator.serviceWorker.register('image-cache.js')
-  .then(function () {
-    console.log('installed successfully');
-  })
-  .catch(function (error) {
-    console.log('Cannot install sw', error);
-  });
+if ('serviceWorker' in window.navigator) {
+  navigator.serviceWorker.register('image-cache.js')
+    .then(function () {
+      console.log('installed successfully');
+    })
+    .catch(function (error) {
+      console.log('Cannot install sw', error);
+    });
+}

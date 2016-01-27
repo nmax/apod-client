@@ -12,20 +12,31 @@ export default Ember.Component.extend({
   didReceiveAttrs () {
     this._super(...arguments);
 
-    Ember.run.later(this, function () {
-      if (!this.get('isLoaded')) {
-        this.set('isLoading', true);
-      }
-    }, 300);
+    if (this.get('isImage')) {
+      let isLoadingTimer = Ember.run.later(this, function () {
+        if (!this.get('isLoaded')) {
+          this.set('isLoading', true);
+        }
+      }, 300);
 
-    let image = new Image();
-    image.src = this.getAttr('item').get('url');
-    image.setAttribute('data-apod-id', this.getAttr('item').get('id'));
-    image.crossorigin = true;
-    image.onload = (() => {
-      this.set('isLoading', false);
-      this.set('isLoaded', true);
-      this.set('image', image);
-    });
+      this.set('isLoadingTimer', isLoadingTimer);
+
+      let image = new Image();
+      image.src = this.getAttr('item').get('url');
+      image.setAttribute('data-apod-id', this.getAttr('item').get('id'));
+      image.crossorigin = true;
+      image.onload = (() => {
+        if (!this.get('isDestroyed')) {
+          this.set('isLoading', false);
+          this.set('isLoaded', true);
+          this.set('image', image);
+        }
+      });
+    }
+  },
+
+  willDestroyElement () {
+    Ember.run.cancel(this.get('isLoadingTimer'));
+    this.set('image', null);
   }
 });
