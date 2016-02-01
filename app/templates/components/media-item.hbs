@@ -2,6 +2,7 @@
   {{#if isLoading}}
     {{ember-spinner}}
   {{else}}
+    {{#if item.copyright}}<span class="copyright">{{item.copyright}}</span>{{/if}}
     {{{image}}}
   {{/if}}
 {{/if}}

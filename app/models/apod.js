@@ -34,6 +34,7 @@ export default DS.Model.extend({
   url: attr('string'),
   hdurl: attr('string'),
   concepts: attr(),
+  copyright: attr('string'),
 
   date: computed(function () {
     let id = this.get('id');
