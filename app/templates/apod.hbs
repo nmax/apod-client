@@ -1,15 +1,16 @@
 
 <div class="detail-container">
   <div class="top-bar">
-    {{#link-to 'index' tagName="button" class="button back-to-list" title="go back to list"}}
-      {{fa-icon "list" size=2 inverse=true}}
-      <span class="top-bar-button-text">Back</span>
-    {{/link-to}}
+    <div class="top-bar-left-group">
+      {{#link-to 'index' tagName="button" class="button back-to-list" title="go back to list"}}
+        {{fa-icon "list" size=2 inverse=true}}
+        <span class="top-bar-button-text">Back</span>
+      {{/link-to}}
 
-    <button class="button make-full-screen" title="show fullscreen image">
-      {{fa-icon "expand" size=2 inverse=true}}
-      <span class="top-bar-button-text">HD</span>
-    </button>
+      <a href="{{model.hdurl}}" download class="button download-hd" title="download hi-res version">
+        {{fa-icon "download" size=2 inverse=true}}<span class="top-bar-button-text">Download HD</span>
+      </a>
+    </div>
 
     <div class="top-bar-right-group">
       {{#link-to 'apod' model.previousModelId tagName="button" class="button previous-apod" title="show previous image"}}

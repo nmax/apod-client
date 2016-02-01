@@ -15,7 +15,8 @@
   justify-content: space-between;
 }
 
-.top-bar-right-group {
+.top-bar-right-group,
+.top-bar-left-group {
   display: flex;
 }
 
@@ -26,17 +27,21 @@
 .top-bar-button-text {
   display: inline-block;
   vertical-align: middle;
-  font-size: 2em;
+  font-size: 1.5em;
 }
 
+.download-hd .top-bar-button-text,
 .previous-apod .top-bar-button-text,
-.make-fullscreen .top-bar-button-text,
 .back-to-list .top-bar-button-text {
-  padding-left: 0.5rem;
+  padding-left: 0.25rem;
 }
 
 .next-apod .top-bar-button-text {
-  padding-right: 0.5rem;
+  padding-right: 0.25rem;
+}
+
+.download-hd {
+  margin-left: 0.50rem;
 }
 
 .detail-view {
