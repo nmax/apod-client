@@ -12,14 +12,16 @@
     </button>
 
     <div class="top-bar-right-group">
-      {{#link-to 'apod' (get model 'previousModelId') tagName="button" class="button previous-apod" title="show previous image"}}
+      {{#link-to 'apod' model.previousModelId tagName="button" class="button previous-apod" title="show previous image"}}
         {{fa-icon "arrow-left" size=2 inverse=true}}
         <span class="top-bar-button-text">Previous</span>
       {{/link-to}}
-      {{#link-to 'apod' (get model 'nextModelId') tagName="button" class="button next-apod" title="show next image"}}
-        <span class="top-bar-button-text">Next</span>
-        {{fa-icon "arrow-right" size=2 inverse=true}}
-      {{/link-to}}
+      {{#if model.nextModelId}}
+        {{#link-to 'apod' model.nextModelId tagName="button" class="button next-apod" title="show next image"}}
+          <span class="top-bar-button-text">Next</span>
+          {{fa-icon "arrow-right" size=2 inverse=true}}
+        {{/link-to}}
+      {{/if}}
     </div>
   </div>
 
