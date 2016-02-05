@@ -69,6 +69,10 @@ img {
   cursor: pointer;
 }
 
+.highlight {
+  background-color: yellow;
+}
+
 @import "bower_components/font-awesome/scss/font-awesome";
 @import 'components/list';
 @import 'components/detail-view';

@@ -7,6 +7,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('apod',  { path: '/apod/:apod_id' });
+  this.route('search');
 });
 
 export default Router;

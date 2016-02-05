@@ -1,0 +1,19 @@
+<h2>Search stuff</h2>
+
+{{search-input
+  currentValue=searchTerm
+  on-search=(action "updateSearch")
+  on-reset=(action "resetSearch")}}
+
+{{#if model}}
+<div class="list-container">
+  {{#ember-collection class="apod-list" buffer="10"
+    items=model cell-layout=(fixed-grid-layout 600 400)
+    estimated-width=1200
+    as |item index|}}
+    <div class="list-item">
+      {{inject-highlights item.explanation item.explanationMatches}}
+    </div>
+  {{/ember-collection}}
+</div>
+{{/if}}
