@@ -60,13 +60,19 @@ img {
 
 .button {
   font-family: $boom-font;
-  background-color: transparent;
   outline: none;
   border: 0;
   color: #fff;
   line-height: 1;
   display: inline-block;
   cursor: pointer;
+}
+
+.page-container {
+  display: flex;
+  flex-flow: column nowrap;
+  margin: 0 auto;
+  height: 100vh;
 }
 
 .highlight {

@@ -13,6 +13,8 @@ export default Ember.Route.extend({
       return this.store.query('apod', {
         q: searchTerm
       });
+    } else {
+      return [];
     }
   }
 

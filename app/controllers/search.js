@@ -15,7 +15,7 @@ export default Ember.Controller.extend({
     },
 
     resetSearch () {
-      this.set('model', null);
+      this.set('model', []);
       this.set('searchTerm', null);
     }
   }

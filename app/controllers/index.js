@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
   queryParams: ['offset', 'limit', 'scrollTop'],
 
   offset: 0,
-  limit: 15,
+  limit: 8,
 
   scrollTop: 0,
   scrollLeft: 0,

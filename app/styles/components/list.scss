@@ -1,8 +1,10 @@
 .list-container {
   position: relative;
   max-width: 1215px; // 1200px + 15px scroll-bar-width
+  width: 100%;
   margin: 0 auto;
-  height: 100vh;
+  height: calc(100vh - 50px);
+  overflow-y: auto;
 }
 
 .list-item {

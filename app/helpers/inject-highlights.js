@@ -6,6 +6,10 @@ export function injectHighlights (params) {
   let [text, matches] = params;
   let newText = text;
 
+  if (!matches || matches.length === 0) {
+    return text;
+  }
+
   let wrapInHightlight = function (wrapee) {
     return `<span class="highlight">${wrapee}</span>`;
   };

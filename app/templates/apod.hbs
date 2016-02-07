@@ -1,5 +1,5 @@
 
-<div class="detail-container">
+<div class="page-container">
   <div class="top-bar">
     <div class="top-bar-left-group">
       {{#link-to 'index' tagName="button" class="button back-to-list" title="go back to list"}}
@@ -29,9 +29,9 @@
   {{#liquid-bind model class="detail-view--animation-target" as |apod|}}
     <div class="detail-view">
       <div class="info-col">
-        <h2 class="apod-title">{{apod.title}}</h2>
+        <h2 class="apod-title">{{inject-highlights apod.title apod.titleMatches}}</h2>
         <div class="apod-date">{{apod.id}}</div>
-        <p class="apod-explanation">{{apod.explanation}}</p>
+        <p class="apod-explanation">{{inject-highlights apod.explanation apod.explanationMatches}}</p>
         {{#if apod.concepts}}
         <hr class="divider">
         <div class="concept-tags">
