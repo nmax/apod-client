@@ -6,7 +6,7 @@
       on-reset=(action "resetSearch")}}
   </div>
 
-  {{#liquid-if model use="fade"}}
+  {{#if model}}
     <div class="list-container">
       {{#ember-collection class="apod-list" buffer="10"
         items=model cell-layout=(fixed-grid-layout 600 400)
@@ -19,5 +19,7 @@
         </div>
       {{/ember-collection}}
     </div>
-  {{/liquid-if}}
+  {{else}}
+    <p>No search results.</p>
+  {{/if}}
 </div>

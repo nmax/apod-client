@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
     searchTerm: 'q'
   },
 
-  searchTerm: null,
+  searchTerm: '',
 
   actions: {
     updateSearch (newSearchTerm) {
@@ -16,7 +16,7 @@ export default Ember.Controller.extend({
 
     resetSearch () {
       this.set('model', []);
-      this.set('searchTerm', null);
+      this.set('searchTerm', '');
     }
   }
 });

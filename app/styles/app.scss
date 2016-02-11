@@ -76,9 +76,10 @@ img {
 }
 
 .highlight {
-  background-color: yellow;
+  background-color: rgba(255, 255, 0, 0.5);
 }
 
 @import "bower_components/font-awesome/scss/font-awesome";
+@import 'components/search-input';
 @import 'components/list';
 @import 'components/detail-view';

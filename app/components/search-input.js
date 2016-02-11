@@ -4,6 +4,8 @@ const {debounce} = Ember.run;
 
 export default Ember.Component.extend({
 
+  classNames: ['search-input'],
+
   debounceRate: 250,
 
   minQueryLength: 3,

@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 const computed = Ember.computed;
+const isBlank = Ember.isBlank;
 
 export default Ember.Controller.extend({
   queryParams: ['offset', 'limit', 'scrollTop'],
@@ -12,6 +13,17 @@ export default Ember.Controller.extend({
   scrollLeft: 0,
 
   actions: {
+
+    gotoSearch (searchTerm) {
+      if (!isBlank(searchTerm)) {
+        return this.transitionToRoute('search', {
+          queryParams: {
+            searchTerm
+          }
+        });
+      }
+    },
+
     scrollChange(scrollLeft, scrollTop) {
       this.set('scrollLeft', scrollLeft);
       this.set('scrollTop', scrollTop);
